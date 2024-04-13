@@ -246,7 +246,7 @@ start_st() {
             log_message "INFO" "Detected macOS. Opening new Terminal window."
             open -a Terminal "$(dirname "$0")/start.sh"
         else
-            exec "$detected_terminal" -e "bash -c 'cd $(dirname "$0") && cd ./SillyTavern && ./start.sh'"
+            exec "$detected_terminal" -e "bash -c 'cd $(dirname "$0") && cd ./SillyTavern && ./start.sh'" &
         fi
     fi
 
@@ -287,7 +287,7 @@ start_extras() {
             log_message "INFO" "Detected macOS. Opening new Terminal window."
             open -a Terminal --args --title="SillyTavern Extras" --working-directory="$(dirname "$0")/SillyTavern-extras" --command "conda activate xtts; python server.py --listen --rvc-save-file --max-content-length=1000 --enable-modules=rvc,caption; exec bash"
         else
-            exec "$detected_terminal" -e "fish -c 'cd $(dirname "$0") && cd ./SillyTavern-extras && conda init && conda activate extras && python server.py --listen --rvc-save-file --max-content-length=1000 --enable-modules=rvc,caption; bash'"
+            exec "$detected_terminal" -e "fish -c 'cd $(dirname "$0") && cd ./SillyTavern-extras && conda activate extras && python server.py --listen --rvc-save-file --max-content-length=1000 --enable-modules=rvc,caption; bash'" &
         fi
     fi
     home
@@ -329,7 +329,7 @@ start_xtts() {
             log_message "INFO" "Detected macOS. Opening new Terminal window."
             open -a Terminal --args --title="XTTSv2 API Server" --working-directory="$(dirname "$0")/xtts" --command "conda activate xtts; python -m xtts_api_server; exec bash"
         else
-            exec "$detected_terminal" -e "fish -c 'cd '$(dirname "$0")/xtts' && conda activate xtts && python -m xtts_api_server; bash'"
+            exec "$detected_terminal" -e "fish -c 'cd '$(dirname "$0")/xtts' && conda activate xtts && python -m xtts_api_server; bash'" &
         fi
     fi
     home
