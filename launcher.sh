@@ -65,6 +65,9 @@ caption_trigger="false"
 summarize_trigger="false"
 edge_tts_trigger="false"
 
+# Set the locale explicitly for the terminal session
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # Function to log messages with timestamps and colors
 log_message() {
